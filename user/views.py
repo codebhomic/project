@@ -14,7 +14,7 @@ def register(request):
     return render(request, 'users/register.html')
 
 def home(request):
-    return render(request,'base.html')
+    return render(request,'user/landingpage.html')
 
 def login(request):
     return render(request,'base.html')

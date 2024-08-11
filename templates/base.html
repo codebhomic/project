@@ -15,11 +15,9 @@
     <!-- Header -->
     {% include "components/navbar.html" %}
     <!-- Main content -->
-    <div class="container mt-4">
         {% block content %}
         <!-- Page-specific content will be rendered here -->
         {% endblock %}
-    </div>
     <!-- Footer -->
     {% include "components/footer.html" %}
     <script src="{% static 'js/script.js' %}"></script>
