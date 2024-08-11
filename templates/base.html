@@ -2,34 +2,28 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Website{% endblock %}</title>
-    
     <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    {% block stylesheet %}{% endblock stylesheet %}
 </head>
-<body>
-<!-- templates/base.html -->
-{% include "components/navbar.html" %}
 
-<h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+<body>
+    <!-- Header -->
+    {% include "components/navbar.html" %}
     <!-- Main content -->
     <div class="container mt-4">
         {% block content %}
         <!-- Page-specific content will be rendered here -->
         {% endblock %}
     </div>
-
     <!-- Footer -->
-    <footer class="bg-light py-4 mt-4">
-        <div class="container">
-            <p class="text-center">© 2024 My Website</p>
-        </div>
-    </footer>
-
+    {% include "components/footer.html" %}
     <script src="{% static 'js/script.js' %}"></script>
+    {% block scriptjs %}{% endblock scriptjs %}
 </body>
+
 </html>
