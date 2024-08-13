@@ -13,6 +13,12 @@ from django.contrib import messages
 def register(request):
     return render(request, 'users/register.html')
 
+def startup_register(request):
+    return render(request, 'users/register.html')
+
+def investor_register(request):
+    return render(request, 'users/register.html')
+
 def home(request):
     return render(request,'user/landingpage.html')
 

@@ -1,7 +1,7 @@
 from django.urls import path
 from business.views import (
-    home
+    dashboard
 )
 urlpatterns = [
-    path('', home, name='home'),
+    path('', dashboard, name='startup_dashboard'),
 ]
