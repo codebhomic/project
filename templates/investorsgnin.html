@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Sign-In</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            background-image: url('bg2.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #ffffff;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full height */
+            overflow: hidden; /* Remove scroll */
+            padding: 20px; /* Add padding to avoid edge cut-off on small screens */
+        }
+
+        .signin-container {
+            background-color: #1a001a;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 25px #bc42b9;
+            width: 100%;
+            max-width: 400px; /* Limit maximum width for larger screens */
+            text-align: center;
+            box-sizing: border-box; /* Ensure padding doesn't affect the width */
+        }
+        header {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+h1 {
+    color: #bc42b9;
+    margin-left: 10px;
+
+}
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #bc42b9;
+            background-color: #333333;
+            color: #ffffff;
+            box-sizing: border-box; /* Ensure padding doesn't affect the width */
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #bc42b9;
+        }
+
+        .input-group button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1a001a;
+            font-size: 17px;
+            font-weight: 500;
+            color: #ffffff;
+            border: 3px solid #bc42b9;
+            border-radius: 8px;
+            box-shadow: 0 0 0 #fec1958c;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+        }
+
+        .input-group button:hover {
+            background-color: #6d0074;
+            box-shadow: 0 0 25px #fec1958c;
+        }
+
+        .additional-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap; /* Allow links to wrap on small screens */
+        }
+
+        .additional-links a {
+            color: #bc42b9;
+            text-decoration: none;
+            transition: color 0.3s;
+            margin-bottom: 10px; /* Add space between links */
+        }
+
+        .additional-links a:hover {
+            color: #ffffff;
+        }
+
+        /* Responsive design for small screens */
+        @media (max-width: 600px) {
+            body {
+                font-size: 16px; /* Reduce font size on smaller screens */
+            }
+
+            .signin-container {
+                padding: 20px; /* Reduce padding for small screens */
+            }
+
+            h1 {
+                font-size: 24px; /* Adjust title size */
+            }
+
+            .input-group button {
+                font-size: 16px; /* Adjust button text size */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo" style="display: inline-block; margin-right: 10px;">
+                <img src="logo.jpeg" alt="Logo" style="height: 50px; width: 50px; vertical-align: middle;">
+            </div>
+            <h1 style="display: inline-block; vertical-align: middle;">WebTank</h1>
+        </nav>
+    </header>
+    
+    <div class="signin-container">
+        <h1>Investor Sign-In</h1>
+        <form action="#" method="POST">
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <button type="submit">Sign In</button>
+            </div>
+        </form>
+        <div class="additional-links">
+            <a href="forgotpassinvestor.html">Forgot Password?</a>
+            <a href="createaccinvestor.html">Create a New Account</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -3,5 +3,5 @@ from business.views import (
     dashboard
 )
 urlpatterns = [
-    path('', dashboard, name='startup_dashboard'),
+    path('dashboard', dashboard, name='dashboard_startup'),
 ]

@@ -11,7 +11,8 @@ from django.contrib import messages
 #     template_name = 'users/logout.html'
 
 def register(request):
-    return render(request, 'users/register.html')
+    return render(request, 'user/investororentreprenaur.html')
+    # return render(request, 'users/register.html')
 
 def startup_register(request):
     return render(request, 'users/register.html')

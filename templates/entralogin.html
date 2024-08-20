@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrepreneur Sign-In</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            background-image: url('bg2.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #ffffff;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .signin-container {
+            background-color: #1a001a;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 25px #bc42b9;
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #ffffff;
+            background: #7e137e00;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #bc42b9;
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #bc42b9;
+        }
+
+        .input-group button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1a001a;
+            font-size: 17px;
+            font-weight: 500;
+            color: #ffffff;
+            border: 3px solid #bc42b9;
+            border-radius: 8px;
+            box-shadow: 0 0 0 #fec1958c;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+        }
+
+        .input-group button:hover {
+            background-color: #6d0074;
+            box-shadow: 0 0 25px #fec1958c;
+        }
+
+        .additional-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .additional-links a {
+            color: #bc42b9;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .additional-links a:hover {
+            color: #ffffff;
+        }
+
+        .header {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header img {
+            height: 50px;
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            color: #bc42b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="logo.jpeg" alt="Logo">
+        <h1>WebTank</h1>
+    </div>
+
+    <div class="signin-container">
+        <h1>Entrepreneur Sign-In</h1>
+        <form action="#" method="POST">
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <button type="submit">Sign In</button>
+            </div>
+        </form>
+        <div class="additional-links">
+            <a href="forgotentra.html">Forgot Password?</a>
+            <a href="createentra.html">Create a New Account</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -3,5 +3,5 @@ from investor.views import (
     dashboard
 )
 urlpatterns = [
-    path('', dashboard, name='investor_dashboard'),
+    path('dashboard', dashboard, name='dashboard_investor'),
 ]

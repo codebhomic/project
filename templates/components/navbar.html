@@ -1,9 +1,20 @@
-{% load site_name %} 
-<header class="text-gray-600 body-font">
-    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-        <span class="ml-3 text-xl">{% get_site_name %}</span>
-      </a>
-
-    </div>
-  </header>
+{% load static %}
+<header>
+  <nav data-magnetic>
+      <div class="logo" style="display: inline-block; margin-right: 10px;">
+          <img src="{% static 'image/logo.jpeg' %}" alt="Logo" style="height: 10rem; width: 10rem; vertical-align: middle;"> <!-- Updated logo size -->
+      </div>
+      <h1>WebTank</h1>
+      
+      <ul>
+          <li><a href="/" id="home">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#contact">Contact</a></li>
+          <li><a href="auth/register" id="links">Links</a></li>
+          <!-- <li><a href="#speaking" id="speaking">Speaking</a></li>
+                <li><a href="#ai" id="ai">AI</a></li> -->
+          <li><a href="https://www.instagram.com/aditya_raj_saxena_19/" id="follow" target="_blank"
+              rel="noreferrer noopener">Follow</a></li>
+        </ul>
+  </nav>
+</header>

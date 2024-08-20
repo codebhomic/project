@@ -1,7 +1,38 @@
 {% extends "base.html" %}
+{% load static %}
 {% load site_name %}
 {% block title %}Welcome To {% get_site_name %}{% endblock title %}
 {% block content %}
-
-
+<section class="hero">
+    <h2>Welcome to the WebTank!</h2>
+    <p>Your one-stop platform for innovative business ideas and investments.</p>
+    <button class="cta-button" onclick="window.location.replace('investororentreprenaur.html')">Get Started</button>
+</section>
+<section id="about">
+    <h3>About Us</h3>
+    <p>We connect entrepreneurs with investors to bring innovative ideas to life.Welcome to WebTank, your gateway to innovation and entrepreneurship. At WebTank, we bridge the gap between visionary entrepreneurs and forward-thinking investors, creating a platform where groundbreaking ideas come to life. Our mission is to foster a dynamic environment where creativity, innovation, and business acumen converge, leading to transformative ventures that can change the world.
+        Whether you're a startup founder with a revolutionary idea or an investor seeking the next big opportunity, WebTank is designed to be your launchpad. We provide a space for entrepreneurs to pitch their concepts, gain valuable feedback, and secure the investment they need to turn dreams into reality. For investors, WebTank offers a curated selection of high-potential ventures, ensuring you have access to the most promising opportunities in the market.
+        Our community is built on the principles of collaboration, transparency, and growth. We believe that by connecting the right people with the right resources, we can create a thriving ecosystem where businesses flourish and innovative solutions are brought to the forefront.
+        Join us at WebTank, where the future of entrepreneurship is being shaped today.</p>
+</section>
+<!-- Embed Spline Design -->
+<div style="text-align: center; margin: 30px 0;">
+    <iframe src="https://my.spline.design/robotfollowcursorforlandingpage-52ad206f31bf09027b1026050000e7f4/" 
+            frameborder="0" 
+            width="100%" 
+            height="600px" 
+            style="border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);">
+    </iframe>
+</div>
+<section id="contact">
+    <h3>Contact Us</h3>
+    <p>Have a question? Get in touch with us!</p>
+    <form>
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+<script src="{% static "js/script.js" %}"></script>
 {% endblock content %}

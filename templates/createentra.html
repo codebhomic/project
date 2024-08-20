@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrepreneur Create New Account</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            background-image: url('bg2.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #ffffff;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            scroll-behavior: smooth; /* Smooth scrolling for the entire page */
+        }
+
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header img {
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            color: #bc42b9;
+            margin: 0;
+        }
+
+        .create-container {
+            background-color: #1a001a;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 25px #bc42b9;
+            width: 350px;
+            text-align: center;
+            animation: fadeIn 1s ease-out; /* Fade-in animation */
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #ffffff;
+            background: #7e137e00;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #bc42b9;
+            background-color: #333333;
+            color: #ffffff;
+            transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #bc42b9;
+            box-shadow: 0 0 10px #bc42b9;
+        }
+
+        .input-group button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1a001a;
+            font-size: 17px;
+            font-weight: 500;
+            color: #ffffff;
+            border: 3px solid #bc42b9;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+        }
+
+        .input-group button:hover {
+            background-color: #6d0074;
+            box-shadow: 0 0 15px #fec1958c;
+        }
+
+        .additional-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .additional-links a {
+            color: #bc42b9;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .additional-links a:hover {
+            color: #ffffff;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <img src="logo.jpeg" alt="Logo">
+        <h1>WebTank</h1>
+    </header>
+
+    <div class="create-container">
+        <h1>Create New Account</h1>
+        <form action="#" method="POST">
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="input-group">
+                <label for="company">Company Name</label>
+                <input type="text" id="company" name="company" required>
+            </div>
+            <div class="input-group">
+                <label for="linkedin">LinkedIn Profile</label>
+                <input type="text" id="linkedin" name="linkedin">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <div class="input-group">
+                <button type="submit">Create Account</button>
+            </div>
+        </form>
+        <div class="additional-links">
+            <a href="entralogin.html">Already have an account? Sign In</a>
+        </div>
+    </div>
+</body>
+
+</html>
