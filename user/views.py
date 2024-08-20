@@ -15,10 +15,10 @@ def register(request):
     # return render(request, 'users/register.html')
 
 def startup_register(request):
-    return render(request, 'users/register.html')
+    return render(request, 'users/createentra.html')
 
 def investor_register(request):
-    return render(request, 'users/register.html')
+    return render(request, 'users/createaccinvestor.html')
 
 def home(request):
     return render(request,'user/landingpage.html')

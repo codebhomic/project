@@ -10,7 +10,7 @@
     <h2 style="font-size: 36px;">Here you can start with...</h2>
     <p style="font-size: 20px;">Explore opportunities and connect with like-minded individuals.</p>
     <p>Are you a investor or Entrepreneur?</p>
-    <button onclick="window.location.replace('investorsgnin.html')">INVESTOR
+    <button onclick="window.location.replace('{% url "register_investor" %}')">INVESTOR
       <div class="star-1">
         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53"
           style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
@@ -91,7 +91,7 @@
       </div>
     </button>
     <br><br>
-    <button onclick="window.location.replace('entralogin.html')">ENTREPRENEUR
+    <button onclick="window.location.replace('{% url "register_startup" %}')">ENTREPRENEUR
       <div class="star-1">
         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53"
           style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
