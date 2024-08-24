@@ -8,9 +8,9 @@ from user.views import (
 urlpatterns = [
     path('', home, name='home'),
     path('register/', register, name='register'),
-    path('register/investor/', startup_register, name='register_startup'),
-    path('register/startup/', investor_register, name='register_investor'),
-    path('login/startup', login, name='login_startup'),
-    path('login/investor', login, name='login_investor'),
+    path('register/startup/', startup_register, name='register_startup'),
+    path('register/investor/', investor_register, name='register_investor'),
+    path('login/startup/', login, name='login_startup'),
+    path('login/investor/', login, name='login_investor'),
     path('logout/', logout, name='logout'),
 ]

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL = '/'  # or any other page
 LOGOUT_REDIRECT_URL = 'login'
 LOGIN_URL = 'login'
+AUTH_USER_MODEL = "user.MyUser"
 
 # Application definition
 
