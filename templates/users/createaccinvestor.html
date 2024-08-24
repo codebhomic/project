@@ -1,28 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New Account</title>
+{% extends "users/register.html" %}
+{% block stylesheet %}
+{% load static %}
     <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    background-image: url('bg2.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: #ffffff;
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Changed from center to flex-start */
-    min-height: 100vh; /* Changed from height to min-height */
-    overflow-y: auto; /* Allow vertical scroll */
-}
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        background-image: url('/static/image/bg2.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #ffffff;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Changed from center to flex-start */
+        min-height: 100vh; /* Changed from height to min-height */
+        overflow-y: auto; /* Allow vertical scroll */
+    }
 
 
         .account-container {
@@ -32,6 +28,7 @@ body {
             box-shadow: 0 0 25px #bc42b9;
             width: 350px;
             text-align: center;
+            margin: 35px 0;
         }
 
         h1 {
@@ -128,14 +125,11 @@ body {
             color: #ffffff;
         }
     </style>
-</head>
-
-<body>
+    {% endblock stylesheet %}
+    
+    {% block registerbody %}
     <div class="account-container">
-        <div class="logo-title">
-            <img src="logo.jpeg" alt="WebTank Logo" class="logo">
-            <h1 class="title">WebTank</h1>
-        </div>
+       
         <h1>Create New Account</h1>
         <form action="#" method="POST">
             <!-- Personal Information -->
@@ -237,6 +231,4 @@ body {
             </div>
         </form>
     </div>
-</body>
-
-</html>
+    {% endblock registerbody %}
