@@ -55,7 +55,7 @@ def investor_register(request):
     else:
         form = UserRegistrationForm()
     context['form'] = form
-    context['user_type'] = "startup"
+    context['user_type'] = "investor"
     return render(request, 'users/registerpage.html',context=context)
 
 def home(request):
