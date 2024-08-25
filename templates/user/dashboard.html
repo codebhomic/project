@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load site_name %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block dashboard_title %}{% endblock dashboard_title %} - {% get_site_name %}</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="icon" href="{% static 'image/logo.jpeg' %}" type="image/jpeg">
+    {% block stylesheet %}{% endblock stylesheet %}
+</head>
+
+<body>
+    <div class="logo">
+        <img src="/static/image/logo.jpeg" alt="{% get_site_name %} Logo" style="display: block; margin: 10px auto; height: 6rem; width: auto;">
+        <h1 style="text-align: center; font-size: 2rem; margin: 0;">{% get_site_name %}</h1>
+    </div>
+    <button class="toggle-btn" onclick="toggleNavbar()">☰ Menu</button>
+
+    <div class="navbar" id="navbar">
+        <br><br><br><br><br><br>
+        <div class="logo">
+            <img src="/static/image/entrepreneur1.png" alt="{% if user.is_investor %}investor{% else %}startup{% endif %} Image">
+            <h1>{{ user.first_name}}</h1>
+        </div>
+        <ul>
+            {% if user.is_investor %}
+            <li><a href="{% url "dashboard_investor" %}">Dashboard</a></li>
+            <li><a href="#">Investments</a></li>
+            {% else %}
+            <li><a href="{% url "dashboard_startup" %}">Dashboard</a></li>
+            {% endif %}
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="{% url "logout" %}">Logout</a></li>
+        </ul>
+    </div>
+    {% if user.is_investor %}
+    {% else %}
+    {% endif %}
+
+    <div class="content" id="content">
+        <div class="dashboard-header">
+            <h1> {% block dashboard_header %}{% endblock dashboard_header %}</h1>
+        </div>
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    <script>
+        function toggleNavbar() {
+            const navbar = document.getElementById('navbar');
+            const content = document.getElementById('content');
+            navbar.classList.toggle('open');
+            content.classList.toggle('shifted');
+        }
+    </script>
+    {% block scriptjs %}{% endblock scriptjs %}
+</body>
+
+</html>

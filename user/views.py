@@ -62,6 +62,8 @@ def home(request):
     return render(request,'user/landingpage.html')
 
 def activation_sent(request):
+    if not request.user.is_anonymous:
+        return redirect("/startup/dashboard/")
     return render(request,'users/activation_sent.html')
 
 def userlogin(request):
@@ -69,7 +71,15 @@ def userlogin(request):
         return redirect("/startup/dashboard/")
     form = LoginForm()
     context = {}
-    context['register'] = "Login for investor" if "Login for investor" in request.build_absolute_uri().split('/') else "Login for startup"
+    if("?next=" in request.build_absolute_uri().split('/')):
+        context['register'] = "Please Login again"
+    else:
+        if ("investor" in request.build_absolute_uri().split('/')):
+            context['register'] = "Login for investor" 
+        else:
+            context['register'] = "Login for startup"
+
+    context['user_type'] = "investor" if "investor" in request.build_absolute_uri().split('/') else "startup"
     if request.method == 'POST':
         form = LoginForm(request.POST, request=request)
         if form.is_valid():

@@ -6,4 +6,4 @@ from django.contrib.auth.decorators import login_required
 def dashboard(request):
     if not request.user.is_investor:
         return redirect("/startup/dashboard/")
-    return render(request,'investordashboard.html')
+    return render(request,'investor/dashboard.html')
