@@ -28,11 +28,31 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
+# Email backend to use for sending emails
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# password KhushiKaku1234
+# SMTP server settings
+EMAIL_HOST = 'smtp.gmail.com'  # Replace with your SMTP server
+EMAIL_PORT = 587  # For TLS, use 465 for SSL
+EMAIL_USE_TLS = True  # Use TLS
+EMAIL_USE_SSL = False  # Use SSL (False if using TLS)
+EMAIL_HOST_USER = 'businessbhoumic@gmail.com'  # Your email address
+EMAIL_HOST_PASSWORD = 'mvxn lnap accr bhld'  # Your email password
+
+# Default email address to use for various automated correspondence from the site manager(s)
+DEFAULT_FROM_EMAIL = 'businessbhoumic@gmail.com'
+
+
 # Redirect URLs after login/logout
 LOGIN_REDIRECT_URL = '/'  # or any other page
-LOGOUT_REDIRECT_URL = 'login'
-LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'login_startup'
+LOGIN_URL = 'login_startup'
 AUTH_USER_MODEL = "user.MyUser"
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 # Application definition
 
@@ -119,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 

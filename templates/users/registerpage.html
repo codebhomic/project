@@ -21,7 +21,13 @@
             </div>
         </form>
         <div class="additional-links">
-            <a href="/">Already have an account? Sign In</a>
+            {% if user_type == "startup" %}
+            <a href="{% url "register_investor" %}">Register As Investor</a>{% else %}
+            <a href="{% url "register_startup" %}">Register As Startup</a>{% endif %}
+        </div>
+        <div class="additional-links">
+            <a href="{% url "login_investor" %}">Login As Investor</a>
+            <a href="{% url "login_startup" %}">Login As Startup</a>
         </div>
     </div>
     {% endblock registerbody %}

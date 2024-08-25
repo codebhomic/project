@@ -162,8 +162,8 @@
 
 <body>
     <header class="header">
-        <img src="{% static 'image/logo.jpeg' %}" alt="Logo">
-        <h1>WebTank</h1>
+        <img src="{% static 'image/logo.jpeg' %}" alt="Logo" onclick="window.location.replace('/')">
+        <h1 onclick="window.location.replace('/')">WebTank</h1>
     </header>
     {% block registerbody %}{% endblock registerbody %}
 
