@@ -4,6 +4,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.urls import reverse
 from user.tokens import account_activation_token
+from project.settings import DEFAULT_FROM_EMAIL
 
 def send_activation_email(user,user_type, request):
     token = account_activation_token.make_token(user)
@@ -15,4 +16,4 @@ def send_activation_email(user,user_type, request):
         'user': user,
         'activation_link': activation_link,
     })
-    send_mail(subject, message, 'from@example.com', [user.email])
+    send_mail(subject=subject, message=message,from_email=DEFAULT_FROM_EMAIL, recipient_list=[user.email])
