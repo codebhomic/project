@@ -9,6 +9,7 @@ class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(
         label="Password",
         validators=[validate_password],
+        widget=forms.PasswordInput(attrs={'placeholder': 'Password'}),
         help_text = 'Enter the Your Password which should not be less than 8 character and must not match with your email address or name'
     )
     class Meta:
@@ -31,11 +32,11 @@ class UserRegistrationForm(forms.ModelForm):
 class LoginForm(forms.Form):
     email = forms.EmailField(
         label="Email Address", help_text="Enter Your Registered Email Address",
-        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'})
+        widget=forms.EmailInput(attrs={'placeholder': 'Email Address'})
         )
     password = forms.CharField(
         label="Password", help_text="Enter Your Password",
-        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'})
+        widget=forms.PasswordInput(attrs={'placeholder': 'Password'})
         )
 
     def __init__(self, *args, **kwargs):
@@ -43,15 +44,21 @@ class LoginForm(forms.Form):
         super().__init__(*args, **kwargs)
 
     def clean(self):
+        # getting email and password from user data 
         email = self.cleaned_data.get('email')
         password = self.cleaned_data.get('password')
         if email and password:
-            user = MyUser.objects.get(email=email)
+            # checking email exist in the database or not 
+            user = MyUser.objects.filter(email=email).first()
+            if user is None: # if useremail is not registered than error that account does not exist
+                raise forms.ValidationError("Account Does not exist.")
             if not user.is_active:
-                raise forms.ValidationError("This account is inactive.")
+                raise forms.ValidationError("This account is inactive. please activate your account")
             pwd = user.password
             if not check_password(password,pwd):
-                raise forms.ValidationError("Invalid email or password.")
+                raise forms.ValidationError("Wrong Password, please click on forget password if you forget your password")
             self.cleaned_data['user'] = user  # Store the authenticated user
+        else:
+            raise forms.ValidationError("Some Error occured")
         
         return self.cleaned_data

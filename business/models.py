@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 
 class StartupDetail(models.Model):
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
-    profilepic = models.ImageField(upload_to="media/startup/profilepics/",blank=True,null=True,default="image/useravatar.png")
+    profilepic = models.ImageField(upload_to="startup/profilepics/",blank=True,null=True,default="startup/profilepics/useravatar.png")
     startup_name = models.CharField(max_length=250)
     startup_detail = models.TextField(blank=False,null=False)
     founder_name = models.CharField(max_length=250)

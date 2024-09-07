@@ -156,8 +156,8 @@
 {% block content %}
 
 <div class="startup-detail-form">
-    <form action="{{ request.get_full_path }}" method="POST" enctype="multipart/form-data">
-        
+    <form action="{{ request.get_full_path }}" method="POST"enctype="multipart/form-data">
+        <img style="width: 100px;" id="imagepreview">
         {{ form }}
         {% csrf_token %}
         <button type="submit">Update Profile</button>
@@ -175,5 +175,30 @@
         const successMessage = document.getElementById('successMessage');
         successMessage.style.display = 'block';
     }
+    document.querySelector("#imagepreview").src = document.querySelectorAll("form a")[0].href
+
+    const is_co_founders = document.getElementById("id_co_founders");
+    const co_founders_details_group = document.getElementById("id_co_founders_details").parentElement;
+    co_founders_details_group.style.display="none";
+    is_co_founders.addEventListener("click",()=>{
+        console.log(is_co_founders.checked)
+        if(is_co_founders.checked==true){
+            co_founders_details_group.style.display="block";
+        }else{
+            co_founders_details_group.style.display="none";
+        }
+    });
+
+    const is_team = document.getElementById("id_team");
+    const id_team_details_group = document.getElementById("id_team_details").parentElement;
+    id_team_details_group.style.display="none";
+    is_team.addEventListener("click",()=>{
+        console.log(is_team.checked)
+        if(is_team.checked==true){
+            id_team_details_group.style.display="block";
+        }else{
+            id_team_details_group.style.display="none";
+        }
+    });
 </script>   
 {% endblock content %}
