@@ -1,9 +1,25 @@
 from django import forms
 from user.models import MyUser
 from django.contrib.auth.password_validation import validate_password
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import check_password
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
+
+class CustomPasswordResetForm(PasswordResetForm):
+    def get_users(self, email):
+        """
+        Return only active users for password reset.
+        """
+        UserModel = get_user_model()
+        active_users = UserModel._default_manager.filter(
+            email__iexact=email,
+            is_active=True
+        )
+        if not active_users:
+            raise ValidationError("This account is not active. Please activate your account first.")
+        return active_users
+
 
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(

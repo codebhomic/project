@@ -17,3 +17,15 @@ def send_activation_email(user,user_type, request):
         'activation_link': activation_link,
     })
     send_mail(subject=subject, message=message,from_email=DEFAULT_FROM_EMAIL, recipient_list=[user.email])
+
+def reset_password_email(user,user_type, request):
+    token = account_activation_token.make_token(user)
+    uid = urlsafe_base64_encode(force_bytes(user.pk))
+    activation_link = request.build_absolute_uri(reverse('activate', kwargs={'uidb64': uid, 'token': token,'user_type':user_type}))
+
+    subject = 'Activate your account'
+    message = render_to_string('account_activation_email.html', {
+        'user': user,
+        'activation_link': activation_link,
+    })
+    send_mail(subject=subject, message=message,from_email=DEFAULT_FROM_EMAIL, recipient_list=[user.email])

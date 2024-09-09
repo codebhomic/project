@@ -4,4 +4,5 @@ from investor.views import (
 )
 urlpatterns = [
     path('dashboard/', dashboard, name='dashboard_investor'),
+    path('profile/editview', dashboard, name='editviewprofile_investor'),
 ]

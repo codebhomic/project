@@ -3,14 +3,44 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect,HttpResponse
 from django.contrib import messages
 from user.models import MyUser
-from user.forms import UserRegistrationForm,LoginForm
+from user.forms import UserRegistrationForm,LoginForm,CustomPasswordResetForm
+from django.contrib.auth import views as auth_views
 from django.shortcuts import render, redirect
 from django.utils.http import urlsafe_base64_decode
 from user.tokens import account_activation_token
 from django.contrib.sites.shortcuts import get_current_site
 from user.utils import send_activation_email
 
+class PasswordResetView(auth_views.PasswordResetView):
+    form_class = CustomPasswordResetForm
+    html_email_template_name = 'password_reset_email.html'  # HTML email
+    template_name = 'users/password_reset_form.html'
+    subject_template_name = "users/password_reset_subject.txt"
+    
+
+class PasswordResetDoneView(auth_views.PasswordResetDoneView):
+    template_name = 'users/password_reset_done.html'
+
+class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+    template_name = 'users/password_reset_confirm.html'
+
+class PasswordResetCompleteView(auth_views.PasswordResetCompleteView):
+    template_name = 'users/password_reset_complete.html'
 def activate(request, uidb64, token, user_type):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = get_user_model().objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, get_user_model().DoesNotExist):
+        user = None
+
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        return redirect('/auth/login/'+user_type)  # Redirect to login page after successful activation
+    else:
+        return render(request, 'account_activation_invalid.html')
+    
+def reset_password(request, uidb64, token, user_type):
     try:
         uid = urlsafe_base64_decode(uidb64).decode()
         user = get_user_model().objects.get(pk=uid)
