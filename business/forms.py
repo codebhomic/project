@@ -1,6 +1,6 @@
 from django import forms
 from user.models import MyUser
-from business.models import StartupDetail
+from business.models import StartupDetail,Pitch
 
 class StartupDetailForm(forms.ModelForm):
    
@@ -25,3 +25,8 @@ class StartupDetailForm(forms.ModelForm):
             'additional_details':'Add a file in which your additional details about your startup is mentioned',
 
         }
+
+class PitchForm(forms.ModelForm):
+    
+    class Meta:
+        model = Pitch
