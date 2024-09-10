@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrepreneur Create New Account</title>
+    <title>{% block registertitle %}{% endblock registertitle %}</title>
     <style>
         body {
             margin: 0;
@@ -76,6 +76,25 @@
             margin-bottom: 5px;
         }
 
+        .input-group .errors{
+            display: block;
+            font-size: 17px;
+            margin: 2px 0;
+            color:red;
+        }
+        .input-group .errorlist {
+            display: block;
+            font-size: 17px;
+            list-style: none;
+            margin: 2px 0;
+            color:red;
+        }
+        .input-group .help_text{
+            display: block;
+            font-size: 13px;
+            margin: 2px;
+        }
+
         .input-group input {
             width: 100%;
             padding: 10px;
@@ -143,8 +162,8 @@
 
 <body>
     <header class="header">
-        <img src="{% static 'image/logo.jpeg' %}" alt="Logo">
-        <h1>WebTank</h1>
+        <img src="{% static 'image/logo.jpeg' %}" alt="Logo" onclick="window.location.replace('/')">
+        <h1 onclick="window.location.replace('/')">WebTank</h1>
     </header>
     {% block registerbody %}{% endblock registerbody %}
 

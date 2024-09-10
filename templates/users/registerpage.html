@@ -6,17 +6,6 @@
     <h1>{{ register }}</h1>
     <form action="{{ request.get_full_path  }}" method="POST">
             {% csrf_token %}
-            {% if form.errors %}
-            <div class="input-group">
-                <div class="errors">
-                    <ul>
-                        {% for field, errors in form.errors.items %}
-                            <li>{{ errors.as_text }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-    {% endif %}
             {% for field in form %}
             <div class="input-group">
                 {{ field.label_tag }} {{ field }}
@@ -28,21 +17,17 @@
             </div>
             {% endfor %}
             <div class="input-group">
-                <button type="submit">Login</button>
+                <button type="submit">Create Account</button>
             </div>
         </form>
         <div class="additional-links">
-            {% if user_type == "investor" %}
-            <a href="{% url "login_startup" %}">Login As Startup</a>
-            {% else %}
-            <a href="{% url "login_investor" %}">Login As Investor</a>
-            {% endif %}
-            <a href="{% url 'password_reset' %}">Reset Your Password</a>
+            {% if user_type == "startup" %}
+            <a href="{% url "register_investor" %}">Register As Investor</a>{% else %}
+            <a href="{% url "register_startup" %}">Register As Startup</a>{% endif %}
         </div>
         <div class="additional-links">
-            <a href="{% url "register_startup" %}">Register As Startup</a>
-            
-            <a href="{% url "register_investor" %}">Register As Investor</a>
+            <a href="{% url "login_investor" %}">Login As Investor</a>
+            <a href="{% url "login_startup" %}">Login As Startup</a>
         </div>
     </div>
     {% endblock registerbody %}

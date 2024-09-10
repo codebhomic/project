@@ -10,10 +10,20 @@
           <li><a href="/" id="home">Home</a></li>
           <li><a href="/#about">About</a></li>
           <li><a href="/#contact">Contact</a></li>
+          {% if user.is_authenticated %}
+            {% if user.is_investor %}
+                <li><a href="{% url 'dashboard_investor' %}">Investor Dashboard</a></li>
+            {% else %}
+                <li><a href="{% url 'dashboard_startup' %}">Startup Dashboard</a></li>
+            {% endif %}
+          {% else %}
           <li><a href="/auth/register" id="links">Links</a></li>
-          <!-- <li><a href="#speaking" id="speaking">Speaking</a></li>
-                <li><a href="#ai" id="ai">AI</a></li> -->
+            <li><a href="{% url 'login_startup' %}">Login As Startup</a></li>
+            <li><a href="{% url 'login_investor' %}">Login As Investor</a></li>
+          {% endif %}
           <li><a href="https://www.instagram.com/aditya_raj_saxena_19/" id="follow" target="_blank"
+              rel="noreferrer noopener">Follow</a></li>
+          <li><a href="https://www.instagram.com/bhomicgarg/" id="follow" target="_blank"
               rel="noreferrer noopener">Follow</a></li>
         </ul>
   </nav>
