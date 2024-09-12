@@ -160,7 +160,16 @@
     {% block stylesheet %}{% endblock stylesheet %}
 </head>
 
-<body>
+<body><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% for message in messages %}
+            <script>
+                Swal.fire({
+                    title: "{{ message.tags }}!",
+                    text: "{{ message }}",
+                    {% if message.tags %} icon: "{{ message.tags }}"{% endif %}
+                });
+            </script>
+            {% endfor %}
     <header class="header">
         <img src="{% static 'image/logo.jpeg' %}" alt="Logo" onclick="window.location.replace('/')">
         <h1 onclick="window.location.replace('/')">WebTank</h1>

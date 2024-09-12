@@ -26,7 +26,7 @@ class StartupDetailForm(forms.ModelForm):
 
         }
 
-class PitchForm(forms.ModelForm):
+# class PitchForm(forms.ModelForm):
     
-    class Meta:
-        model = Pitch
+#     class Meta:
+#         model = Pitch

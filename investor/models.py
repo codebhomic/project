@@ -6,13 +6,13 @@ from django.utils.translation import gettext_lazy as _
 
 class investorDetail(models.Model):
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
-    profilepic = models.ImageField(upload_to="investor/profilepics/",blank=True,null=True,default="useravatar.png")
+    profilepic = models.ImageField(upload_to="investor/profilepics/", blank=True, null=True, default="investor/profilepics/useravatar.png")
     investor_name = models.CharField(max_length=250)
-    investor_experince = models.CharField(max_length=250,blank=False,null=False)
-    investor_amount = models.CharField(max_length=250,blank=False,null=False)
-    investor_detail = models.TextField(blank=False,null=False)
-    resume = models.FileField(upload_to="static/startup/", max_length=100,blank=True,null=True)
-    additional_details = models.FileField(upload_to="static/startup/", max_length=100,blank=True,null=True)
+    investor_experince = models.CharField(max_length=250)
+    investor_amount = models.DecimalField(max_digits=12, decimal_places=2)  # If it's a number
+    investor_detail = models.TextField()
+    resume = models.FileField(upload_to="investor/resume/", max_length=150, blank=True, null=True)
+    additional_details = models.FileField(upload_to="investor/additional_details/", max_length=150, blank=True, null=True)
     is_approved = models.BooleanField(default=False)
 
     def clean(self):

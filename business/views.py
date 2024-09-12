@@ -4,12 +4,14 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from business.models import StartupDetail
 from business.forms import StartupDetailForm
+from django.contrib import messages
 
 # dashboard page
 @login_required
 def dashboard(request):
     context={} # context to be passed in templates to be used in projects
     if request.user.is_investor: # checking if user is investor then redirecting to investor dashboard
+        messages.error(request, "You cant access this page.")
         return redirect("/investor/dashboard/")
     data = StartupDetail.objects.filter(user=request.user).first() # checking if user had entered his detail
     if data is None:

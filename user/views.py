@@ -123,4 +123,5 @@ def userlogin(request):
 
 def userlogout(request):
     logout(request=request)
+    messages.success(request, "You Logged Out successfully.")
     return redirect("dashboard_investor")

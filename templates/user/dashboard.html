@@ -9,9 +9,19 @@
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <link rel="icon" href="{% static 'image/logo.jpeg' %}" type="image/jpeg">
     {% block stylesheet %}{% endblock stylesheet %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
+    {% for message in messages %}
+            <script>
+                Swal.fire({
+                    title: "{{ message.tags }}!",
+                    text: "{{ message }}",
+                    {% if message.tags %} icon: "{{ message.tags }}"{% endif %}
+                });
+            </script>
+            {% endfor %}
     <div class="logo">
         <img src="/static/image/logo.jpeg" alt="{% get_site_name %} Logo" style="display: block; margin: 10px auto; height: 6rem; width: auto;">
         <h1 style="text-align: center; font-size: 2rem; margin: 0;">{% get_site_name %}</h1>
@@ -32,8 +42,8 @@
             <li><a href="{% url "dashboard_startup" %}">Dashboard</a></li>
             {% endif %}
             <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="{% url "logout" %}">Logout</a></li>
+            <li><a href="{% url 'viewprofile_investor' %}">Profile</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </div>
     {% if user.is_investor %}
@@ -44,6 +54,9 @@
         <div class="dashboard-header">
             <h1> {% block dashboard_header %}{% endblock dashboard_header %}</h1>
         </div>
+        {% if messages %}
+        
+        {% endif %}
         {% block content %}
         {% endblock content %}
     </div>
