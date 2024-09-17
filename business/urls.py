@@ -5,6 +5,6 @@ from business.views import (
 urlpatterns = [
     path('dashboard/', dashboard, name='dashboard_startup'),
     path('profile/', profile, name='profile_startup'),
-    path('profile/view', profile, name='view_profile_startup'),
+    path('profile/view', editprofile, name='view_profile_startup'),
     path('editprofile/', editprofile, name='editprofile_startup'),
 ]

@@ -49,7 +49,6 @@
         padding: 10px;
         margin-bottom: 20px;
         border: none;
-        {% comment %} border-radius: 5px; {% endcomment %}
         box-shadow: 0 0 10px #bc42b9;
         background-color: #333333;
         color: #ffffff;
@@ -64,7 +63,6 @@
     .startup-detail-form input[type="tel"]:focus,
     .startup-detail-form select:focus,
     .startup-detail-form input[type="file"]:focus {
-        {% comment %} box-shadow: 0 0 15px #ff6f61; {% endcomment %}
         outline: none;
     }
 
@@ -158,16 +156,13 @@
 <div class="startup-detail-form">
     <form action="{{ request.get_full_path }}" method="POST"enctype="multipart/form-data">
         <img style="width: 100px;" id="imagepreview">
+        <p id="errorMessage" style="color: red; display: none;"></p>
+        
         {{ form }}
         {% csrf_token %}
         <button type="submit">Update Profile</button>
         
     </form>
-    {% comment %} <button onclick="updateProfile()">Update Profile</button> {% endcomment %}
-
-    {% comment %} <div class="success-message" id="successMessage">
-        Your profile has been updated successfully! You will be redirected to the dashboard after 24 hours.
-    </div> {% endcomment %}
 </div>
 
 <script>
@@ -175,7 +170,34 @@
         const successMessage = document.getElementById('successMessage');
         successMessage.style.display = 'block';
     }
+    if(document.querySelectorAll("form a")[0]){
     document.querySelector("#imagepreview").src = document.querySelectorAll("form a")[0].href
+}
+    document.getElementById('id_profilepic').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+
+    try {
+        if (!file) {
+            throw new Error("No file selected. Please choose an image.");
+        }
+        
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const imagepreview = document.getElementById('imagepreview');
+            imagepreview.src = e.target.result;
+            imagepreview.style.display = 'block';  // Show the preview
+            document.getElementById('errorMessage').style.display = 'none';  // Hide error message
+        };
+
+        reader.readAsDataURL(file);  // Convert the file to a Data URL
+    } catch (error) {
+        const errorMessage = document.getElementById('errorMessage');
+        errorMessage.textContent = error.message;  // Display the error message
+        errorMessage.style.display = 'block';  // Show the error message
+        document.getElementById('imagepreview').style.display = 'none';  // Hide image preview
+    }
+    });
 
     const is_co_founders = document.getElementById("id_co_founders");
     const co_founders_details_group = document.getElementById("id_co_founders_details").parentElement;

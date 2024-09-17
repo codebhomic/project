@@ -23,8 +23,8 @@
             </script>
             {% endfor %}
     <div class="logo">
-        <img src="/static/image/logo.jpeg" alt="{% get_site_name %} Logo" style="display: block; margin: 10px auto; height: 6rem; width: auto;">
-        <h1 style="text-align: center; font-size: 2rem; margin: 0;">{% get_site_name %}</h1>
+        <img onclick="window.location.replace('/')" src="/static/image/logo.jpeg" alt="{% get_site_name %} Logo" style="display: block; margin: 10px auto; height: 6rem; width: auto;">
+        <h1 onclick="window.location.replace('/')" style="text-align: center; font-size: 2rem; margin: 0;">{% get_site_name %}</h1>
     </div>
     <button class="toggle-btn" onclick="toggleNavbar()">☰ Menu</button>
 
@@ -36,13 +36,14 @@
         </div>
         <ul>
             {% if user.is_investor %}
-            <li><a href="{% url "dashboard_investor" %}">Dashboard</a></li>
+            <li><a href="{% url 'dashboard_investor' %}">Dashboard</a></li>
+            <li><a href="{% url 'viewprofile_investor' %}">Profile</a></li>
             <li><a href="#">Investments</a></li>
             {% else %}
-            <li><a href="{% url "dashboard_startup" %}">Dashboard</a></li>
+            <li><a href="{% url 'dashboard_startup' %}">Dashboard</a></li>
+            <li><a href="{% url 'view_profile_startup' %}">Profile</a></li>
             {% endif %}
             <li><a href="#">Settings</a></li>
-            <li><a href="{% url 'viewprofile_investor' %}">Profile</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </div>

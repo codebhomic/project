@@ -29,10 +29,7 @@ def profile(request):
 def editprofile(request):
     if request.user.is_investor:
         return redirect("/investor/dashboard/")
-    
-    # Try to get the existing startup detail for the user
     startup_detail = StartupDetail.objects.filter(user=request.user).first()
-    
     if request.method == "POST":
         form = StartupDetailForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
@@ -55,18 +52,15 @@ def editprofile(request):
                     team_details=team_details,business_model=business_model,resume=resume,
                     additional_details=additional_details,
                 )
-                datasaved.save()
             else:
                 datasaved = StartupDetail.objects.update(user=request.user,profilepic=profilepic,startup_name=startup_name,
                 founder_name=founder_name,founder_detail=founder_detail,co_founders=co_founders,
                 co_founders_details=co_founders_details,team=team,team_details=team_details,business_model=business_model,
                 resume=resume,additional_details=additional_details,
                 )
-                datasaved.save()
             return redirect("/startup/dashboard/")
     else:
         form = StartupDetailForm(instance=startup_detail)
-
     context = {
         'form': form,
         'page_title': "Add Startup Detail" if startup_detail is None else "Edit Startup Detail"

@@ -4,7 +4,8 @@ from django.contrib.auth.decorators import login_required
 from investor.models import investorDetail
 from investor.forms import investorDetailForm
 from django.contrib import messages
-
+from django.core.files.storage import FileSystemStorage
+from os import path
 @login_required
 def dashboard(request):
     if not request.user.is_investor:
@@ -14,6 +15,8 @@ def dashboard(request):
     data = investorDetail.objects.filter(user=uid).first() # checking if investor had entered his detail and created full profile to start investing
     if data is None:
         return redirect("/investor/profile/edit")
+    if data.is_approved is not True:
+        return render(request,"investor/waitforapproval.html")
     return render(request,'investor/dashboard.html')
 
 # edit profile and add profile to investor
@@ -27,6 +30,7 @@ def editprofile(request):
     if request.method == "POST":
         form = investorDetailForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
+            profilepicf = request.FILES['profilepic']
             profilepic = form.cleaned_data['profilepic']
             investor_name = form.cleaned_data['investor_name']
             investor_experince = form.cleaned_data['investor_experince']
@@ -34,14 +38,17 @@ def editprofile(request):
             investor_detail =form.cleaned_data['investor_detail']
             resume = form.cleaned_data['resume']
             additional_details = form.cleaned_data['additional_details']
+            fs = FileSystemStorage(location=path.join('media', 'investor/profilepics/'))
+            filename = fs.save(profilepicf.name, profilepicf)  # This saves the file and returns the filename
+            print(filename)
             if not investordetail:
                 investorDetail.objects.create(
-                    user=request.user,profilepic=profilepic,investor_name=investor_name,
+                    user=request.user,profilepic='investor/profilepics/'+filename,investor_name=investor_name,
                     investor_experince=investor_experince,investor_amount=investor_amount,
                     investor_detail=investor_detail,resume=resume,
                     additional_details=additional_details,
                 )
-                messages.info(request, "Profile details Added, after approving detils, you cant start investing.")
+                # messages.info(request, "Profile details Added, after approving detils, you cant start investing.")
             else:
                 investorDetail.objects.update(
                     user=request.user,profilepic=profilepic,investor_name=investor_name,
@@ -49,9 +56,9 @@ def editprofile(request):
                     investor_detail=investor_detail,resume=resume,
                     additional_details=additional_details,
                 )
-                messages.success(request, "Profile details updated.")
+                # messages.success(request, "Profile details updated.")
             
-            return redirect("/investor/dashboard/")
+            # return redirect("/investor/dashboard/")
     else:
         form = investorDetailForm(instance=investordetail)
 

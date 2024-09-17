@@ -163,11 +163,6 @@
         <button type="submit">Update Profile</button>
         
     </form>
-    {% comment %} <button onclick="updateProfile()">Update Profile</button> {% endcomment %}
-
-    {% comment %} <div class="success-message" id="successMessage">
-        Your profile has been updated successfully! You will be redirected to the dashboard after 24 hours.
-    </div> {% endcomment %}
 </div>
 
 <script>
@@ -175,10 +170,7 @@
         const successMessage = document.getElementById('successMessage');
         successMessage.style.display = 'block';
     }
-    try{
-        document.querySelector("#imagepreview").src = document.querySelectorAll("form a")[0].href
-    }catch (error) {            
-    }
+    document.querySelector("#imagepreview").src = document.querySelectorAll("form a")[0].href
     document.getElementById('id_profilepic').addEventListener('change', function(event) {
         const file = event.target.files[0];
 
